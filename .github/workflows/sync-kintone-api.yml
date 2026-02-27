@@ -64,5 +64,4 @@ jobs:
           END_DATE: ${{ steps.date-range.outputs.end }}
         run: |
           pnpm exec claude -p --dangerously-skip-permissions \
-            --allowedTools "Read,Write,Edit,Glob,Grep,WebFetch,WebSearch,Bash(git *),Bash(gh *),Bash(cd * && pnpm *),Bash(pnpm *),Bash(mkdir *)" \
             "/sync-kintone-api ${START_DATE}〜${END_DATE}のkintone REST API更新を反映して"

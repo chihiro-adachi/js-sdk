@@ -1,6 +1,19 @@
 ---
 name: sync-kintone-api
 description: kintone APIアップデート情報からREST APIの変更を調査し、rest-api-clientへの反映を行うスキル
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - WebFetch
+  - WebSearch
+  - "Bash(git *)"
+  - "Bash(gh *)"
+  - "Bash(cd * && pnpm *)"
+  - "Bash(pnpm *)"
+  - "Bash(mkdir *)"
 ---
 
 # kintone API更新追従ワークフロー
