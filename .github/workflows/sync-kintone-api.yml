@@ -8,7 +8,6 @@ on:
         required: true
         type: choice
         options:
-          - "1month"
           - "3months"
           - "6months"
           - "1year"
@@ -48,7 +47,6 @@ jobs:
         id: date-range
         run: |
           case "${{ inputs.period }}" in
-            1month)  months=1 ;;
             3months) months=3 ;;
             6months) months=6 ;;
             1year)   months=12 ;;
