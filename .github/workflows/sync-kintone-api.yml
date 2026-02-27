@@ -64,4 +64,5 @@ jobs:
           END_DATE: ${{ steps.date-range.outputs.end }}
         run: |
           pnpm exec claude -p --dangerously-skip-permissions \
+            --model claude-opus-4-6 \
             "/sync-kintone-api ${START_DATE}〜${END_DATE}のkintone REST API更新を反映して"

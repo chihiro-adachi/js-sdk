@@ -54,6 +54,7 @@ kintone REST APIの更新情報を調査し、`packages/rest-api-client` に反�
 | クライアント型の追加・変更   | `packages/rest-api-client/src/client/types/` 配下（`app/`, `record/`, `space/`, `plugin/`）                                       |
 | 新規APIメソッドの追加        | `packages/rest-api-client/src/client/`（`AppClient.ts`, `RecordClient.ts`, `SpaceClient.ts`, `PluginClient.ts`, `FileClient.ts`） |
 | テストの追加・更新           | `packages/rest-api-client/src/client/__tests__/`                                                                                  |
+| ドキュメントの更新           | `packages/rest-api-client/docs/`                                                                                                  |
 
 差分を確認する際は以下を実施：
 
@@ -68,6 +69,7 @@ kintone REST APIの更新情報を調査し、`packages/rest-api-client` に反�
 - 必要に応じてクライアントメソッドの追加・変更
 - テストフィクスチャの更新・追加
 - 既存コードのパターンや命名規約に従う
+- `packages/rest-api-client/docs/` 配下のドキュメントに影響がある場合は合わせて更新する
 
 ## 5. 検証
 
@@ -109,5 +111,13 @@ pnpm fix:prettier
 ### 6b. PR作成
 
 1. `.github/PULL_REQUEST_TEMPLATE.md` のフォーマット（Why / What / How to test / Checklist）に従ってPRを作成する
-2. `gh pr create` を使用する。fork先リポジトリへのPR作成で認証エラーが出る場合は `gh api repos/{owner}/{repo}/pulls` を使用する（SAML認証回避）
-3. **作成したPRのURLをユーザーに報告して完了とする**
+2. PRの本文には以下を含める：
+   - **Why**: API更新への追従である旨
+   - **What**: 修正内容に加え、以下の調査結果を記載する
+     - ステップ1で確認したAPI更新の概要（どのAPIにどのような変更があったか）
+     - 参照したAPIアップデートページへのリンク（`https://cybozu.dev/ja/kintone/news/api-updates/...`）
+     - 参照した公式APIドキュメントへのリンク（`https://cybozu.dev/ja/kintone/docs/rest-api/...`）
+   - **How to test**: 検証手順
+   - **Checklist**: テンプレートのチェックリスト
+3. `gh pr create` を使用する。fork先リポジトリへのPR作成で認証エラーが出る場合は `gh api repos/{owner}/{repo}/pulls` を使用する（SAML認証回避）
+4. **作成したPRのURLをユーザーに報告して完了とする**
