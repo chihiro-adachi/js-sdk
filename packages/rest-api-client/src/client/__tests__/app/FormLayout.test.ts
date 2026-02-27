@@ -14,6 +14,12 @@ const layout = [
       {
         type: "LABEL",
         label: "label1",
+        elementId: "label1",
+        size: { width: "100" },
+      },
+      {
+        type: "HR",
+        elementId: "hr1",
         size: { width: "100" },
       },
       {

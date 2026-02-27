@@ -41,12 +41,14 @@ export type ReferenceTable = {
 export type Label = {
   type: "LABEL";
   label: string;
+  elementId: string;
   size: {
     width: string;
   };
 };
 export type HR = {
   type: "HR";
+  elementId: string;
   size: {
     width: string;
   };
