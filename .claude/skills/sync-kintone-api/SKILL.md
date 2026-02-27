@@ -47,15 +47,16 @@ kintone REST APIの更新情報を調査し、`packages/rest-api-client` に反�
 
 変更の種類を以下のように分類し、差分を一覧化する：
 
-| 変更種別 | 対象ファイルパス |
-|---|---|
-| フィールド型定義の追加・変更 | `packages/rest-api-client/src/KintoneFields/types/field.ts`, `property.ts`, `layout.ts`, `fieldLayout.ts` |
-| フィールド型チェック | `packages/rest-api-client/src/KintoneFields/types/__checks__/` |
-| クライアント型の追加・変更 | `packages/rest-api-client/src/client/types/` 配下（`app/`, `record/`, `space/`, `plugin/`） |
-| 新規APIメソッドの追加 | `packages/rest-api-client/src/client/`（`AppClient.ts`, `RecordClient.ts`, `SpaceClient.ts`, `PluginClient.ts`, `FileClient.ts`） |
-| テストの追加・更新 | `packages/rest-api-client/src/client/__tests__/` |
+| 変更種別                     | 対象ファイルパス                                                                                                                  |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| フィールド型定義の追加・変更 | `packages/rest-api-client/src/KintoneFields/types/field.ts`, `property.ts`, `layout.ts`, `fieldLayout.ts`                         |
+| フィールド型チェック         | `packages/rest-api-client/src/KintoneFields/types/__checks__/`                                                                    |
+| クライアント型の追加・変更   | `packages/rest-api-client/src/client/types/` 配下（`app/`, `record/`, `space/`, `plugin/`）                                       |
+| 新規APIメソッドの追加        | `packages/rest-api-client/src/client/`（`AppClient.ts`, `RecordClient.ts`, `SpaceClient.ts`, `PluginClient.ts`, `FileClient.ts`） |
+| テストの追加・更新           | `packages/rest-api-client/src/client/__tests__/`                                                                                  |
 
 差分を確認する際は以下を実施：
+
 - Grep/Globで既存の型定義やメソッドを検索
 - 公式ドキュメントとの差分を特定
 - **対話環境の場合**: 修正を始める前に、変更内容の一覧をユーザーに提示して確認を取る
