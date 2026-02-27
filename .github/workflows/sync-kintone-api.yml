@@ -1,0 +1,67 @@
+name: sync-kintone-api
+
+on:
+  workflow_dispatch:
+    inputs:
+      period:
+        description: "API更新を調査する期間"
+        required: true
+        type: choice
+        options:
+          - "3months"
+          - "6months"
+          - "1year"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    if: github.actor == 'chihiro-adachi'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Create pnpm cache directory
+        run: mkdir -vp $(pnpm store path --silent)
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Calculate date range
+        id: date-range
+        run: |
+          case "${{ inputs.period }}" in
+            3months) months=3 ;;
+            6months) months=6 ;;
+            1year)   months=12 ;;
+          esac
+          start_date=$(date -d "-${months} months" +%Y-%m-%d 2>/dev/null || date -v-${months}m +%Y-%m-%d)
+          end_date=$(date +%Y-%m-%d)
+          echo "start=${start_date}" >> "$GITHUB_OUTPUT"
+          echo "end=${end_date}" >> "$GITHUB_OUTPUT"
+
+      - name: Run sync-kintone-api
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          START_DATE: ${{ steps.date-range.outputs.start }}
+          END_DATE: ${{ steps.date-range.outputs.end }}
+        run: |
+          pnpm exec claude -p --dangerously-skip-permissions \
+            "/sync-kintone-api ${START_DATE}〜${END_DATE}のkintone REST API更新を反映して"
