@@ -113,10 +113,12 @@ pnpm fix:prettier
 1. `.github/PULL_REQUEST_TEMPLATE.md` のフォーマット（Why / What / How to test / Checklist）に従ってPRを作成する
 2. PRの本文には以下を含める：
    - **Why**: API更新への追従である旨
-   - **What**: 修正内容に加え、以下の調査結果を記載する
-     - ステップ1で確認したAPI更新の概要（どのAPIにどのような変更があったか）
-     - 参照したAPIアップデートページへのリンク（`https://cybozu.dev/ja/kintone/news/api-updates/...`）
-     - 参照した公式APIドキュメントへのリンク（`https://cybozu.dev/ja/kintone/docs/rest-api/...`）
+   - **What**: 以下の構成でレビューアーが判断しやすい形にまとめる
+     - **調査対象期間**: 例: 2025-01-01〜2025-03-31
+     - **アップデート一覧と判定**: 対象期間内の全アップデートを表形式で列挙し、それぞれ「対応」「対象外」を明記する
+       - 日付 / タイトル（アップデートページへのリンク付き） / 判定（対応 or 対象外） / 判定理由
+       - 対象外の例: 「JavaScript APIの変更のためREST APIクライアントに影響なし」
+     - **対応内容の詳細**: 「対応」と判定した各アップデートについて、具体的な修正内容と参照した公式APIドキュメントへのリンク
    - **How to test**: 検証手順
    - **Checklist**: テンプレートのチェックリスト
 3. `gh pr create` を使用する。fork先リポジトリへのPR作成で認証エラーが出る場合は `gh api repos/{owner}/{repo}/pulls` を使用する（SAML認証回避）
