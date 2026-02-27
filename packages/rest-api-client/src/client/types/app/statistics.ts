@@ -18,6 +18,8 @@ export type AppStatistics = {
   recordCount: string;
   fieldCount: string;
   dailyRequestCount: string;
+  apiTokenCount: string;
+  webhookCount: string;
   storageUsage: string;
   customized: boolean;
   creator: {
