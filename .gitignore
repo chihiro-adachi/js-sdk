@@ -3,3 +3,6 @@ node_modules/
 /.idea/
 
 mise.local.toml
+
+.claude/plans
+.claude/settings.local.json

@@ -36,6 +36,7 @@
     "update-contributors": "ts-node ./scripts/update-contributors.ts"
   },
   "devDependencies": {
+    "@anthropic-ai/claude-code": "^2.1.59",
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
     "@babel/preset-typescript": "^7.28.5",
